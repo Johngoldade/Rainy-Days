@@ -1,28 +1,28 @@
 const typeDefs = `
     type Book {
-        bookId: string
-        title: string
-        authors: string[]
-        description: string
-        image: string
-        link: string
+        bookId: String
+        title: String
+        authors: [String]
+        description: String
+        image: String
+        link: String
     }
 
     type User {
         _id: ID!
-        username: string
-        email: string
-        savedBooks: Book[]
-        bookCount: number
+        username: String
+        email: String
+        savedBooks: [Book]
+        bookCount: Int
     }
 
     type Auth {
-        token: string
+        token: String
         user: User
     }
 
     input BookInput {
-        authors: String[]!
+        authors: [String!]
         description: String!
         title: String!
         bookId: String!
