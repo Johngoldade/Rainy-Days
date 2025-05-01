@@ -24,10 +24,9 @@ const typeDefs = `
     input BookInput {
         authors: [String!]
         description: String!
-        title: String!
         bookId: String!
         image: String!
-        link: String!
+        title: String!
     }
         
     type Query {
