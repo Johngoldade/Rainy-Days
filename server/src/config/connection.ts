@@ -1,8 +1,14 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-dotenv.config()
+dotenv.config();
 
-const MONGODB_URI = process.env.MONGODB_URI || ''
+if (!process.env.MONGODB_URI) {
+    throw new Error('Environment variable MONGODB_URI is not defined');
+}
+
+const MONGODB_URI: string = process.env.MONGODB_URI;
+console.log(`MONGODB_URI: ${MONGODB_URI}`);
+
 
 const db = async (): Promise<typeof mongoose.connection> => {
     try {
