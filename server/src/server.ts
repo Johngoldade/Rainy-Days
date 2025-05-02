@@ -7,9 +7,7 @@ import { expressMiddleware } from '@apollo/server/express4' // Added
 import { typeDefs, resolvers } from './schemas/index.js' // Added
 import { authenticateToken } from './utils/auth.js' // Added
 // import routes from './routes/index.js'
-import { fileURLToPath } from 'node:url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
 
 const server = new ApolloServer({
   typeDefs,
@@ -32,7 +30,7 @@ const startApolloServer = async () => {
     
 
     app.get('*', (_req: Request, res: Response) => {
-      res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+      res.sendFile(path.join('/opt/render/project/src/server/client/dist/index.html'))
     });
   }
 
