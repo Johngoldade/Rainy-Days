@@ -30,7 +30,7 @@ const startApolloServer = async () => {
     
 
     app.get('*', (_req: Request, res: Response) => {
-      res.sendFile(path.join('/opt/render/project/src/server/client/dist/index.html'))
+      res.sendFile(path.join('/opt/render/project/src/client/dist/index.html'))
     });
   }
 
