@@ -7,15 +7,16 @@ import { expressMiddleware } from '@apollo/server/express4' // Added
 import { typeDefs, resolvers } from './schemas/index.js' // Added
 import { authenticateToken } from './utils/auth.js' // Added
 import { fileURLToPath } from 'url';
-// import routes from './routes/index.js'
+// import meta url and set it as the dirname for my es modules
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-
+// set up apollo server
 const server = new ApolloServer({
   typeDefs,
   resolvers
 })
 
+// function to start the apollo server
 const startApolloServer = async () => {
   await server.start()
   await db()
@@ -44,18 +45,5 @@ const startApolloServer = async () => {
 
 }
 
+// start the apollo server
 startApolloServer()
-
-
-
-
-// // if we're in production, serve client/build as static assets
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../client/build')));
-// }
-
-// app.use(routes);
-
-// db.once('open', () => {
-//   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
-// });

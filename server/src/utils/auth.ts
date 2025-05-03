@@ -1,8 +1,10 @@
+// import the needed packages
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
 import dotenv from 'dotenv';
 dotenv.config();
 
+// middleware taking in parameters and verifying that the token is valid
 export const authenticateToken = ({ req }: any) => {
   let token = req.body.token || req.query.token || req.headers.authorization;
 
@@ -24,6 +26,7 @@ export const authenticateToken = ({ req }: any) => {
   return req;
 };
 
+// middleware to create a new token
 export const signToken = (username: string, email: string, _id: unknown) => {
   const payload = { username, email, _id };
   const secretKey: any = process.env.JWT_SECRET_KEY;
@@ -31,6 +34,7 @@ export const signToken = (username: string, email: string, _id: unknown) => {
   return jwt.sign({ data: payload }, secretKey, { expiresIn: '2h' });
 };
 
+// authentication error message
 export class AuthenticationError extends GraphQLError {
   constructor(message: string) {
     super(message, undefined, undefined, undefined, ['UNAUTHENTICATED']);
