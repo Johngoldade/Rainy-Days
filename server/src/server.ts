@@ -6,7 +6,9 @@ import { ApolloServer } from '@apollo/server' // Added
 import { expressMiddleware } from '@apollo/server/express4' // Added
 import { typeDefs, resolvers } from './schemas/index.js' // Added
 import { authenticateToken } from './utils/auth.js' // Added
+import { fileURLToPath } from 'url';
 // import routes from './routes/index.js'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 
 const server = new ApolloServer({
