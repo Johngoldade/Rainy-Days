@@ -1,15 +1,17 @@
+// import the needed packages
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config();
 
+// verify that a MONGODB_URI exists
 if (!process.env.MONGODB_URI) {
     throw new Error('Environment variable MONGODB_URI is not defined');
 }
 
+// variable to store the mongodb uri
 const MONGODB_URI: string = process.env.MONGODB_URI;
-console.log(`MONGODB_URI: ${MONGODB_URI}`);
 
-
+// function to run the database connection 
 const db = async (): Promise<typeof mongoose.connection> => {
     try {
         await mongoose.connect(MONGODB_URI)
@@ -21,6 +23,5 @@ const db = async (): Promise<typeof mongoose.connection> => {
     }
 }
 
-;
-
+// export the db connection function for use by the server
 export default db;

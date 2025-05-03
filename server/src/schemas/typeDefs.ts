@@ -1,3 +1,4 @@
+// define the typedefs
 const typeDefs = `
     type Book {
         bookId: String
@@ -41,5 +42,5 @@ const typeDefs = `
     }
 
 `
-
+// export the typedefs
 export default typeDefs

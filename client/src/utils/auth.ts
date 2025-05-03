@@ -8,6 +8,7 @@ interface ExtendedJwt extends JwtPayload {
   }
 };
 
+// define authentication methods
 class AuthService {
   getProfile() {
     return jwtDecode<ExtendedJwt>(this.getToken());
@@ -38,7 +39,7 @@ class AuthService {
   login(idToken: string, bookIds: string[]) {
     localStorage.setItem('id_token', idToken);
     localStorage.setItem('saved_books', JSON.stringify([...bookIds]))
-    // window.location.assign('/');
+    window.location.assign('/');
   }
 
   logout() {
